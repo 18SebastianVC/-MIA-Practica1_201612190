@@ -1,0 +1,13 @@
+\d atleta
+ALTER TABLE ATLETA DROP CONSTRAINT fk_atleta_disciplina;
+\d atleta
+CREATE TABLE DISCIPLINA_ATLETA(
+cod_atleta INTEGER NOT NULL,
+cod_disciplina INTEGER NOT NULL,
+
+FOREIGN KEY (cod_atleta) REFERENCES ATLETA (cod_atleta) ON DELETE CASCADE,
+FOREIGN KEY (cod_disciplina) REFERENCES DISCIPLINA (cod_disciplina) ON DELETE CASCADE,
+
+CONSTRAINT DISCIPLINA_ATLETA_PK PRIMARY KEY (cod_atleta, cod_disciplina)
+);
+\dt
